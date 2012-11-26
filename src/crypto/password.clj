@@ -34,7 +34,7 @@
            key-factory (SecretKeyFactory/getInstance "PBKDF2WithHmacSHA1")]
        (->> (.generateSecret key-factory key-spec)
             (.getEncoded)
-            (base64)
+            (encode-str)
             (str (encode-str salt) "$")
             (str (encode-int iterations) "$")))))
 
