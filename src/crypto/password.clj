@@ -1,4 +1,7 @@
 (ns crypto.password
+  "Functions for encrypting passwords using the PBKDF2 algorithm, as recommended
+  by the NIST:
+  http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf"
   (:require [crypto.random :as random]
             [clojure.string :as str])
   (:import javax.crypto.SecretKeyFactory
@@ -12,6 +15,15 @@
   (String. (Base64/encodeInteger (BigInteger/valueOf i))))
 
 (defn encrypt
+  "Encrypt a password string using the PBKDF2 algorithm. The default number of
+  iterations is 20,000. If a salt is not specified, 8 random bytes are
+  generated from a cryptographically secure source.
+
+  The number of iterations and salt are encoded in the output in the following
+  format:
+    <iterations>$<salt>$<encrypted password>
+
+  All elements in the output string are Base64 encoded."
   ([raw]
      (encrypt raw 20000))
   ([raw iterations]
@@ -37,7 +49,10 @@
     (zero? (reduce bit-or (map bit-xor (.getBytes a) (.getBytes b))))
     false))
 
-(defn equal? [raw encrypted]
+(defn equal?
+  "Compare a raw string with a string encrypted with the crypto.password/encrypt
+  function. Returns true the string match, false otherwise."
+  [raw encrypted]
   (let [[i s _]    (str/split encrypted #"\$")
         salt       (decode-str s)
         iterations (decode-int i)]
