@@ -50,8 +50,9 @@
     false))
 
 (defn equal?
-  "Compare a raw string with a string encrypted with the crypto.password/encrypt
-  function. Returns true the string match, false otherwise."
+  "Compare a raw string with a string encrypted with the
+  crypto.password.pbkdf2/encrypt function. Returns true the string match, false
+  otherwise."
   [raw encrypted]
   (let [[i s _]    (str/split encrypted #"\$")
         salt       (decode-str s)
