@@ -1,4 +1,4 @@
-(ns crypto.password
+(ns crypto.password.pbkdf2
   "Functions for encrypting passwords using the PBKDF2 algorithm, as recommended
   by the NIST:
   http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf"
