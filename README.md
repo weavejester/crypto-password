@@ -4,7 +4,8 @@ A Clojure library for encrypting passwords. Supports the following
 algorithms:
 
 * [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
-* [BCrypt](http://bcrypt.sourceforge.net/)
+* [Bcrypt](http://bcrypt.sourceforge.net/)
+* [scrypt](http://www.tarsnap.com/scrypt.html)
 
 ## Installation
 
@@ -14,7 +15,7 @@ Add the following dependency to your `project.clj` file:
 
 ## Usage
 
-Pick an encryption algorithm, either pbkdf2 or bcrypt:
+Pick an encryption algorithm, either `pbkdf2`, `bcrypt` or `scrypt`:
 
 ```clojure
 (require '[crypto.password.<algorithm> :as password])
