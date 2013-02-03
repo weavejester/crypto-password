@@ -11,4 +11,10 @@
     "Test123"
     "ÁäñßOÔ"
     "großpösna"
-    "Some rather long pass phrase perhaps out of a book or poem"))
+    "Some rather long pass phrase perhaps out of a book or poem")
+
+  (are [s r] (not (password/equal? r (password/encrypt s)))
+    "a" "b"
+    "a" "a "
+    "aaaaa" "aaaaa\n"
+    "großpösna" "grossposna"))
