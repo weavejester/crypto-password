@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.2.1"]
                  [crypto-random "1.1.0"]
                  [commons-codec "1.6"]
-                 [org.mindrot/jbcrypt "0.3m"]])
+                 [org.mindrot/jbcrypt "0.3m"]
+                 [com.lambdaworks/scrypt "1.3.3"]])
