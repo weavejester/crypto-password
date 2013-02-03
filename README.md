@@ -4,6 +4,7 @@ A Clojure library for encrypting passwords. Supports the following
 algorithms:
 
 * [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
+* [BCrypt](http://bcrypt.sourceforge.net/)
 
 ## Installation
 
@@ -11,15 +12,27 @@ Add the following dependency to your `project.clj` file:
 
     [crypto-password "0.1.0-SNAPSHOT"]
 
-## Functions
+## Usage
 
-### `(crypto.password/encrypt raw)`
+Pick an encryption algorithm, either pbkdf2 or bcrypt:
 
-One-way encrypton for a plaintext password.
+```clojure
+(require '[crypto.password.<algorithm> :as password])
+```
 
-### `(crypto.password/equal? raw encrypted)`
+Then use the `encrypt` function to apply a secure, one-way encryption
+algorithm to a password:
 
-Returns true if a plaintext password matches the encrypted value.
+```clojure
+(def encrypted (password/encrypt "foobar"))
+```
+
+And the `equal?` function to check the encrypted password against a
+plaintext password:
+
+```clojure
+(password/equal? "foobar" encrypted) ;; => true
+```
 
 ## License
 
