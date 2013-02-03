@@ -3,7 +3,7 @@
   (:require [crypto.password.bcrypt :as password]))
 
 (deftest test-passwords
-  (are [s] (password/equal? s (password/encrypt s))
+  (are [s] (password/check s (password/encrypt s))
     "a"
     "foo"
     "password"
@@ -13,7 +13,7 @@
     "großpösna"
     "Some rather long pass phrase perhaps out of a book or poem")
 
-  (are [s r] (not (password/equal? r (password/encrypt s)))
+  (are [s r] (not (password/check r (password/encrypt s)))
     "a" "b"
     "a" "a "
     "aaaaa" "aaaaa\n"

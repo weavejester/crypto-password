@@ -16,7 +16,7 @@
   ([raw n r p]
      (SCryptUtil/scrypt raw n r p)))
 
-(defn equal?
+(defn check
   "Compare a raw string with a string encrypted with the
   crypto.password.scrypt/encrypt function. Returns true the string match, false
   otherwise."

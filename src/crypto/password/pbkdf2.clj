@@ -49,7 +49,7 @@
     (zero? (reduce bit-or (map bit-xor (.getBytes a) (.getBytes b))))
     false))
 
-(defn equal?
+(defn check
   "Compare a raw string with a string encrypted with the
   crypto.password.pbkdf2/encrypt function. Returns true the string match, false
   otherwise."

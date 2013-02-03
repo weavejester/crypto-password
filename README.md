@@ -28,11 +28,11 @@ algorithm to a password:
 (def encrypted (password/encrypt "foobar"))
 ```
 
-And the `equal?` function to check the encrypted password against a
+And the `check` function to check the encrypted password against a
 plaintext password:
 
 ```clojure
-(password/equal? "foobar" encrypted) ;; => true
+(password/check "foobar" encrypted) ;; => true
 ```
 
 ## License

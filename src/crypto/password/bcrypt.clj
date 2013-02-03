@@ -11,7 +11,7 @@
   ([raw work-factor]
      (BCrypt/hashpw raw (BCrypt/gensalt work-factor))))
 
-(defn equal?
+(defn check
   "Compare a raw string with a string encrypted with the
   crypto.password.bcrypt/encrypt function. Returns true the string match, false
   otherwise."
