@@ -1,11 +1,13 @@
 # crypto-password
 
-A Clojure library for encrypting passwords. Supports the following
-algorithms:
+A Clojure library for securing user passwords using a
+[key derivation function][1]. Supports the following algorithms:
 
 * [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
 * [Bcrypt](http://bcrypt.sourceforge.net/)
 * [scrypt](http://www.tarsnap.com/scrypt.html)
+
+[1]: http://en.wikipedia.org/wiki/Key_derivation_function
 
 ## Installation
 
