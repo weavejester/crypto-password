@@ -35,6 +35,10 @@ plaintext password:
 (password/check "foobar" encrypted) ;; => true
 ```
 
+## Documentation
+
+* [API Docs](http://weavejester.github.com/crypto-password/)
+
 ## License
 
 Copyright © 2013 James Reeves
