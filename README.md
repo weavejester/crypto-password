@@ -1,5 +1,7 @@
 # crypto-password
 
+[![Build Status](https://travis-ci.org/weavejester/crypto-password.png?branch=master)](https://travis-ci.org/weavejester/crypto-password)
+
 A Clojure library for securing user passwords using a
 [key derivation function][1]. Supports the following algorithms:
 
