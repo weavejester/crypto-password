@@ -1,6 +1,6 @@
 (defproject crypto-password "0.1.0"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Library for securely hashing passwords"
+  :url "https://github.com/weavejester/crypto-password"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :plugins [[codox "0.6.4"]]
