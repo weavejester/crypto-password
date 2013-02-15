@@ -8,4 +8,7 @@
                  [crypto-random "1.1.0"]
                  [commons-codec "1.6"]
                  [org.mindrot/jbcrypt "0.3m"]
-                 [com.lambdaworks/scrypt "1.3.3"]])
+                 [com.lambdaworks/scrypt "1.3.3"]]
+  :profiles
+  {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
+   :1.5 {:dependencies [[org.clojure/clojure "1.5.0-RC16"]]}})
