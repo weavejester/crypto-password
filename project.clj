@@ -9,6 +9,8 @@
                  [commons-codec "1.6"]
                  [org.mindrot/jbcrypt "0.3m"]
                  [com.lambdaworks/scrypt "1.3.3"]]
+  :codox {:src-dir-uri "http://github.com/weavejester/crypto-password/blob/0.1.0"
+          :src-linenum-anchor-prefix "L"}
   :profiles
   {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
    :1.5 {:dependencies [[org.clojure/clojure "1.5.0-RC16"]]}})
