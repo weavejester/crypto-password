@@ -13,4 +13,4 @@
           :src-linenum-anchor-prefix "L"}
   :profiles
   {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
-   :1.5 {:dependencies [[org.clojure/clojure "1.5.0-RC16"]]}})
+   :1.5 {:dependencies [[org.clojure/clojure "1.5.1"]]}})
