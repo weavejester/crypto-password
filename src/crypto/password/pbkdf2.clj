@@ -3,6 +3,7 @@
   by the NIST:
   http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf"
   (:require [crypto.random :as random]
+            [crypto.equality :as crypto]
             [clojure.string :as str])
   (:import javax.crypto.SecretKeyFactory
            javax.crypto.spec.PBEKeySpec
@@ -44,11 +45,6 @@
 (defn- decode-int [s]
   (int (Base64/decodeInteger (.getBytes s))))
 
-(defn- constant-time-eq? [^String a ^String b]
-  (if (and a b (= (.length a) (.length b)))
-    (zero? (reduce bit-or (map bit-xor (.getBytes a) (.getBytes b))))
-    false))
-
 (defn check
   "Compare a raw string with a string encrypted with the
   crypto.password.pbkdf2/encrypt function. Returns true the string match, false
@@ -57,4 +53,4 @@
   (let [[i s _]    (str/split encrypted #"\$")
         salt       (decode-str s)
         iterations (decode-int i)]
-    (constant-time-eq? encrypted (encrypt raw iterations salt))))
+    (crypto/eq? encrypted (encrypt raw iterations salt))))
