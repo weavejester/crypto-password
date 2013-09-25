@@ -15,7 +15,7 @@ A Clojure library for securing user passwords using a
 
 Add the following dependency to your `project.clj` file:
 
-    [crypto-password "0.1.0"]
+    [crypto-password "0.1.1"]
 
 ## Usage
 
