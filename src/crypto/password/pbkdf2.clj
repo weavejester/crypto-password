@@ -17,7 +17,7 @@
 
 (defn encrypt
   "Encrypt a password string using the PBKDF2 algorithm. The default number of
-  iterations is 20,000. If a salt is not specified, 8 random bytes are
+  iterations is 100,000. If a salt is not specified, 8 random bytes are
   generated from a cryptographically secure source.
 
   The number of iterations and salt are encoded in the output in the following
