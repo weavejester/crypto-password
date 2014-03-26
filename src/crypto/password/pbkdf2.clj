@@ -26,7 +26,7 @@
 
   All elements in the output string are Base64 encoded."
   ([raw]
-     (encrypt raw 20000))
+     (encrypt raw 100000))
   ([raw iterations]
      (encrypt raw iterations (random/bytes 8)))
   ([raw iterations salt]
