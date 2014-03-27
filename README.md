@@ -39,6 +39,17 @@ plaintext password:
 (password/check "foobar" encrypted) ;; => true
 ```
 
+## Defaults
+
+The default options for the key derivation algorithms were chosen
+based on benchmarks carried on on a AWS t1.micro server running Ubuntu
+13.10 (ami-35dbde5c), in March 2014.
+
+On this hardware, the key derivation functions take approximately
+200ms to complete with their default options. This is a short enough
+time to not be an inconvenience for a human being, but long enough to
+make brute forcing encrypted passwords very costly.
+
 ## Documentation
 
 * [API Docs](http://weavejester.github.com/crypto-password/)
