@@ -5,9 +5,9 @@
 (defn encrypt
   "Encrypt a password string using the BCrypt algorithm. The optional work
   factor is the log2 of the number of hashing rounds to apply. The default
-  work factor is 10."
+  work factor is 11."
   ([raw]
-     (BCrypt/hashpw raw (BCrypt/gensalt)))
+     (BCrypt/hashpw raw (BCrypt/gensalt 11)))
   ([raw work-factor]
      (BCrypt/hashpw raw (BCrypt/gensalt work-factor))))
 
