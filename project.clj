@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :plugins [[codox "0.6.6"]]
   :dependencies [[org.clojure/clojure "1.2.1"]
-                 [crypto-random "1.1.0"]
+                 [crypto-random "1.2.0"]
                  [crypto-equality "1.0.0"]
                  [commons-codec "1.6"]
                  [org.mindrot/jbcrypt "0.3m"]
