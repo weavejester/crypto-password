@@ -1,4 +1,4 @@
-(defproject crypto-password "0.1.2"
+(defproject crypto-password "0.1.3"
   :description "Library for securely hashing passwords"
   :url "https://github.com/weavejester/crypto-password"
   :license {:name "Eclipse Public License"
@@ -10,7 +10,7 @@
                  [commons-codec "1.6"]
                  [org.mindrot/jbcrypt "0.3m"]
                  [com.lambdaworks/scrypt "1.4.0"]]
-  :codox {:src-dir-uri "http://github.com/weavejester/crypto-password/blob/0.1.2/"
+  :codox {:src-dir-uri "http://github.com/weavejester/crypto-password/blob/0.1.3/"
           :src-linenum-anchor-prefix "L"}
   :profiles
   {:1.3 {:dependencies [[org.clojure/clojure "1.3.0"]]}
