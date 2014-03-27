@@ -6,11 +6,11 @@
 (defn encrypt
   "Encrypt a password string using the scrypt algorithm. This function takes
   three optional parameters:
-    n - the CPU cost, must be a power of 2, defaults to 2^14
+    n - the CPU cost, must be a power of 2, defaults to 2^15
     r - the memory cost, defaults to 8
     p - the parallelization parameter, defaults to 1"
   ([raw]
-     (encrypt raw 16384))
+     (encrypt raw 32768))
   ([raw n]
      (encrypt raw n 8 1))
   ([raw n r p]
