@@ -30,8 +30,9 @@
   ([raw iterations]
      (encrypt raw iterations (random/bytes 8)))
   ([raw iterations salt]
-     (let [key-length  160
-           key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
+     (encrypt raw iterations salt 160))
+  ([raw iterations salt key-length]
+     (let [key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
            key-factory (SecretKeyFactory/getInstance "PBKDF2WithHmacSHA1")]
        (->> (.generateSecret key-factory key-spec)
             (.getEncoded)
@@ -50,7 +51,8 @@
   crypto.password.pbkdf2/encrypt function. Returns true the string match, false
   otherwise."
   [raw encrypted]
-  (let [[i s _]    (str/split encrypted #"\$")
+  (let [[i s k]    (str/split encrypted #"\$")
         salt       (decode-str s)
-        iterations (decode-int i)]
-    (crypto/eq? encrypted (encrypt raw iterations salt))))
+        iterations (decode-int i)
+        stored-key (decode-str k)]
+    (crypto/eq? encrypted (encrypt raw iterations salt (* 8 (count stored-key))))))
