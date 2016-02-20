@@ -10,7 +10,7 @@
            org.apache.commons.codec.binary.Base64))
 
 (def algorithm-codes
-  {"HMAC-SHA1" "PBKDF2WithHmacSHA1"
+  {"HMAC-SHA1"   "PBKDF2WithHmacSHA1"
    "HMAC-SHA256" "PBKDF2WithHmacSHA256"})
 
 (defn- encode-str [bytes]
@@ -23,17 +23,18 @@
   "Encrypt a password string using the PBKDF2 algorithm. The default number of
   iterations is 100,000. If a salt is not specified, 8 random bytes are
   generated from a cryptographically secure source.  The default algorithm is
-  \"HMAC-SHA1\".   When running on JDK 1.8 \"HMAC-256\" is also supported
+  \"HMAC-SHA1\". When running on JDK 1.8 \"HMAC-SHA256\" is also supported.
 
   The number of iterations and salt are encoded in the output in the following
-  format:
-    <iterations>$<salt>$<encrypted password>  - for HMAC-SHA1 algorithm
+  formats for HMAC-SHA1:
 
-    or
+    <iterations>$<salt>$<encrypted password>
 
-    <iterations>$<salt>$<algorithm>$<encrypted password> - for all other algorithms
+  And for all other algoritms:
 
-  All elements in the output string are Base64 encoded."
+    <iterations>$<salt>$<algorithm>$<encrypted password>
+
+  The iterations, salt, and encrypted password are all Base64 encoded."
   ([raw]
      (encrypt raw 100000))
   ([raw iterations]
@@ -41,7 +42,7 @@
   ([raw iterations salt]
      (encrypt raw iterations salt "HMAC-SHA1"))
   ([raw iterations salt algorithm]
-   {:pre [(contains? algorithm-codes algorithm)]}
+     {:pre [(contains? algorithm-codes algorithm)]}
      (let [key-length  160
            key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
            key-factory (SecretKeyFactory/getInstance (get algorithm-codes algorithm))]
@@ -63,8 +64,10 @@
   crypto.password.pbkdf2/encrypt function. Returns true the string match, false
   otherwise."
   [raw encrypted]
-   (let [[i s a h] (str/split encrypted #"\$")
-         salt (decode-str s)
-         iterations (decode-int i)
-         raw-encrypted  (if (nil? h) (encrypt raw iterations salt) (encrypt raw iterations salt a))]
-     (crypto/eq? raw-encrypted encrypted)))
+  (let [[i s a h]     (str/split encrypted #"\$")
+        salt          (decode-str s)
+        iterations    (decode-int i)
+        raw-encrypted (if h
+                        (encrypt raw iterations salt a)
+                        (encrypt raw iterations salt))]
+    (crypto/eq? raw-encrypted encrypted)))
