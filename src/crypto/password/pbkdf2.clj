@@ -32,16 +32,16 @@
 
   And for all other algoritms:
 
-    <iterations>$<salt>$<algorithm>$<encrypted password>
+    <iterations>$<algorithm>$<salt>$<encrypted password>
 
   The iterations, salt, and encrypted password are all Base64 encoded."
   ([raw]
      (encrypt raw 100000))
   ([raw iterations]
-     (encrypt raw iterations (random/bytes 8)))
-  ([raw iterations salt]
-     (encrypt raw iterations salt "HMAC-SHA1"))
-  ([raw iterations salt algorithm]
+     (encrypt raw iterations "HMAC-SHA1"))
+  ([raw iterations algorithm]
+     (encrypt raw iterations algorithm (random/bytes 8)))
+  ([raw iterations algorithm salt]
      {:pre [(contains? algorithm-codes algorithm)]}
      (let [key-length  160
            key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
@@ -49,8 +49,8 @@
        (->> (.generateSecret key-factory key-spec)
             (.getEncoded)
             (encode-str)
-            (str (if (= algorithm "HMAC-SHA1") "" (str algorithm "$")))
             (str (encode-str salt) "$")
+            (str (if (= algorithm "HMAC-SHA1") "" (str algorithm "$")))
             (str (encode-int iterations) "$")))))
 
 (defn- decode-str [s]
@@ -64,10 +64,9 @@
   crypto.password.pbkdf2/encrypt function. Returns true the string match, false
   otherwise."
   [raw encrypted]
-  (let [[i s a h]     (str/split encrypted #"\$")
-        salt          (decode-str s)
-        iterations    (decode-int i)
-        raw-encrypted (if h
-                        (encrypt raw iterations salt a)
-                        (encrypt raw iterations salt))]
+  (let [parts         (str/split encrypted #"\$")
+        iterations    (decode-int (parts 0))
+        algorithm     (if (= (count parts) 4) (parts 1) "HMAC-SHA1")
+        salt          (decode-str (if (= algorithm "HMAC-SHA1") (parts 1) (parts 2)))
+        raw-encrypted (encrypt raw iterations algorithm salt)]
     (crypto/eq? raw-encrypted encrypted)))
