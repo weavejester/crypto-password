@@ -13,7 +13,7 @@
 
 (defn check
   "Compare a raw string with a string encrypted with the
-  crypto.password.bcrypt/encrypt function. Returns true the string match, false
-  otherwise."
+  crypto.password.bcrypt/encrypt function. Returns true if the string matches,
+  false otherwise."
   [raw encrypted]
   (BCrypt/checkpw raw encrypted))

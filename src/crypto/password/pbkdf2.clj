@@ -61,8 +61,8 @@
 
 (defn check
   "Compare a raw string with a string encrypted with the
-  crypto.password.pbkdf2/encrypt function. Returns true the string match, false
-  otherwise."
+  crypto.password.pbkdf2/encrypt function. Returns true if the string matches,
+  false otherwise."
   [raw encrypted]
   (let [parts         (str/split encrypted #"\$")
         iterations    (decode-int (parts 0))
