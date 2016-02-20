@@ -1,6 +1,6 @@
 (ns crypto.password.scrypt-test
-  (:use clojure.test)
-  (:require [crypto.password.scrypt :as password]))
+  (:require [clojure.test :refer :all]
+            [crypto.password.scrypt :as password]))
 
 (deftest test-passwords
   (are [s] (password/check s (password/encrypt s))

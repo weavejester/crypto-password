@@ -1,6 +1,6 @@
 (ns crypto.password.pbkdf2-test
-  (:use clojure.test)
-  (:require [crypto.password.pbkdf2 :as password]))
+  (:require [clojure.test :refer :all]
+            [crypto.password.pbkdf2 :as password]))
 
 (deftest test-passwords
   (are [s] (password/check s (password/encrypt s))
