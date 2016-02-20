@@ -19,6 +19,9 @@
     "aaaaa" "aaaaa\n"
     "großpösna" "grossposna")
 
+  (testing "compatibility with 0.1.3 and below"
+    (is (password/check "foobar" "AYag$IZQh42/FUiU=$+ZTrPOgVnE0ZMpvqCLDrfbjxSwg=")))
+
   (are [s a] (password/check s (password/encrypt s 100000 a))
     "foo" "HMAC-SHA1"
     "foo" "HMAC-SHA256")
