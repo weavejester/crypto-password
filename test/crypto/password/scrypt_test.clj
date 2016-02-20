@@ -1,4 +1,4 @@
-(ns crypto.password.test.scrypt
+(ns crypto.password.scrypt-test
   (:use clojure.test)
   (:require [crypto.password.scrypt :as password]))
 

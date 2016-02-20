@@ -1,4 +1,4 @@
-(ns crypto.password.test.pbkdf2
+(ns crypto.password.pbkdf2-test
   (:use clojure.test)
   (:require [crypto.password.pbkdf2 :as password]))
 
