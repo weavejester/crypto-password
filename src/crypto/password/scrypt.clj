@@ -18,7 +18,7 @@
 
 (defn check
   "Compare a raw string with a string encrypted with the
-  crypto.password.scrypt/encrypt function. Returns true the string match, false
+  crypto.password.scrypt/encrypt function. Returns true if the string match, false
   otherwise."
   [raw encrypted]
   (SCryptUtil/check raw encrypted))
