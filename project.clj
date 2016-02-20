@@ -12,6 +12,7 @@
   :plugins [[lein-codox "0.9.4"]]
   :codox
   {:output-path "codox"
+   :metadata {:doc/format :markdown}
    :source-uri "http://github.com/weavejester/crypto-password/blob/{version}/{filepath}#L{line}"}
   :aliases {"test-all" ["with-profile" "+1.6:+1.7:+1.8" "test"]}
   :profiles

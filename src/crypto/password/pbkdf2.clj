@@ -1,7 +1,8 @@
 (ns crypto.password.pbkdf2
   "Functions for encrypting passwords using the PBKDF2 algorithm, as recommended
-  by the NIST:
-  http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf"
+  by the NIST.
+
+  See: http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf"
   (:require [crypto.random :as random]
             [crypto.equality :as crypto]
             [clojure.string :as str])
@@ -9,7 +10,7 @@
            javax.crypto.spec.PBEKeySpec
            org.apache.commons.codec.binary.Base64))
 
-(def algorithm-codes
+(def ^:no-doc algorithm-codes
   {"HMAC-SHA1"   "PBKDF2WithHmacSHA1"
    "HMAC-SHA256" "PBKDF2WithHmacSHA256"})
 
@@ -28,11 +29,11 @@
   The number of iterations and salt are encoded in the output in the following
   formats for HMAC-SHA1:
 
-    <iterations>$<salt>$<encrypted password>
+      <iterations>$<salt>$<encrypted password>
 
   And for all other algoritms:
 
-    <iterations>$<algorithm>$<salt>$<encrypted password>
+      <iterations>$<algorithm>$<salt>$<encrypted password>
 
   The iterations, salt, and encrypted password are all Base64 encoded."
   ([raw]
@@ -60,9 +61,8 @@
   (int (Base64/decodeInteger (.getBytes s))))
 
 (defn check
-  "Compare a raw string with a string encrypted with the
-  crypto.password.pbkdf2/encrypt function. Returns true if the string matches,
-  false otherwise."
+  "Compare a raw string with a string encrypted with the [[encrypt]] function.
+  Returns true if the string matches, false otherwise."
   [raw encrypted]
   (let [parts         (str/split encrypted #"\$")
         iterations    (decode-int (parts 0))
