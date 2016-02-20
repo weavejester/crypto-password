@@ -2,11 +2,6 @@
   (:use clojure.test)
   (:require [crypto.password.pbkdf2 :as password]))
 
-(defn- encrypt-four-parameters [raw]
-  (let [salt (byte-array (map byte [0 1 2 3 4 5 6 7]))
-        algorithm "HMAC-SHA1"]
-    (password/encrypt raw 100000 salt algorithm)))
-
 (deftest test-passwords
   (are [s] (password/check s (password/encrypt s))
     "a"
@@ -24,8 +19,11 @@
     "aaaaa" "aaaaa\n"
     "großpösna" "grossposna")
 
-  (are [s] (password/check s (encrypt-four-parameters s))
-    "foo" "foo")
+  (let [salt (byte-array (map byte [0 1 2 3 4 5 6 7]))]
+    (are [s a] (password/check s (password/encrypt s 100000 salt a))
+      "foo" "HMAC-SHA1"
+      "foo" "HMAC-SHA256")
 
-  (are [s r] (not (password/check r (encrypt-four-parameters s)))
-    "foo" "bar"))
+    (are [s r a] (not (password/check r (password/encrypt s 100000 salt a)))
+      "foo" "bar" "HMAC-SHA1"
+      "foo" "bar" "HMAC-SHA256")))
