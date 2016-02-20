@@ -36,22 +36,22 @@
 
   The iterations, salt, and encrypted password are all Base64 encoded."
   ([raw]
-     (encrypt raw 100000))
+   (encrypt raw 100000))
   ([raw iterations]
-     (encrypt raw iterations "HMAC-SHA1"))
+   (encrypt raw iterations "HMAC-SHA1"))
   ([raw iterations algorithm]
-     (encrypt raw iterations algorithm (random/bytes 8)))
+   (encrypt raw iterations algorithm (random/bytes 8)))
   ([raw iterations algorithm salt]
-     {:pre [(contains? algorithm-codes algorithm)]}
-     (let [key-length  160
-           key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
-           key-factory (SecretKeyFactory/getInstance (get algorithm-codes algorithm))]
-       (->> (.generateSecret key-factory key-spec)
-            (.getEncoded)
-            (encode-str)
-            (str (encode-str salt) "$")
-            (str (if (= algorithm "HMAC-SHA1") "" (str algorithm "$")))
-            (str (encode-int iterations) "$")))))
+   {:pre [(contains? algorithm-codes algorithm)]}
+   (let [key-length  160
+         key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
+         key-factory (SecretKeyFactory/getInstance (get algorithm-codes algorithm))]
+     (->> (.generateSecret key-factory key-spec)
+          (.getEncoded)
+          (encode-str)
+          (str (encode-str salt) "$")
+          (str (if (= algorithm "HMAC-SHA1") "" (str algorithm "$")))
+          (str (encode-int iterations) "$")))))
 
 (defn- decode-str [s]
   (Base64/decodeBase64 (.getBytes s)))

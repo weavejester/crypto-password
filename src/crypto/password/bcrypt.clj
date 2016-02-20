@@ -7,9 +7,9 @@
   factor is the log2 of the number of hashing rounds to apply. The default
   work factor is 11."
   ([raw]
-     (BCrypt/hashpw raw (BCrypt/gensalt 11)))
+   (BCrypt/hashpw raw (BCrypt/gensalt 11)))
   ([raw work-factor]
-     (BCrypt/hashpw raw (BCrypt/gensalt work-factor))))
+   (BCrypt/hashpw raw (BCrypt/gensalt work-factor))))
 
 (defn check
   "Compare a raw string with a string encrypted with the
