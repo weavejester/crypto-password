@@ -1,8 +1,8 @@
 (ns crypto.password.bcrypt
   "Functions for encrypting passwords using the widely-used bcrypt algorithm.
 
-  See: http://bcrypt.sourceforge.net/"
-  (:import org.mindrot.jbcrypt.BCrypt))
+  See: https://github.com/patrickfav/bcrypt"
+  (:import [at.favre.lib.crypto.bcrypt BCrypt]))
 
 (defn encrypt
   "Encrypt a password string using the BCrypt algorithm. The optional work
@@ -11,10 +11,10 @@
   ([raw]
    (encrypt raw 11))
   ([raw work-factor]
-   (BCrypt/hashpw raw (BCrypt/gensalt work-factor))))
+   (.hashToString (BCrypt/withDefaults) work-factor (.toCharArray raw))))
 
 (defn check
   "Compare a raw string with a string encrypted with the [[encrypt]] function.
   Returns true if the string matches, false otherwise."
   [raw encrypted]
-  (BCrypt/checkpw raw encrypted))
+  (.verified (.verify (BCrypt/verifyer) (.toCharArray raw) encrypted)))

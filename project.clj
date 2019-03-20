@@ -7,7 +7,7 @@
                  [crypto-random "1.2.0"]
                  [crypto-equality "1.0.0"]
                  [commons-codec "1.10"]
-                 [org.mindrot/jbcrypt "0.3m"]
+                 [at.favre.lib/bcrypt "0.7.0"]
                  [com.lambdaworks/scrypt "1.4.0"]]
   :plugins [[lein-codox "0.9.4"]]
   :codox
