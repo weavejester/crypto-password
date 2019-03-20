@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [crypto-random "1.2.0"]
                  [crypto-equality "1.0.0"]
-                 [commons-codec "1.10"]
+                 [commons-codec "1.12"]
                  [at.favre.lib/bcrypt "0.7.0"]
                  [com.lambdaworks/scrypt "1.4.0"]]
   :plugins [[lein-codox "0.9.4"]]
