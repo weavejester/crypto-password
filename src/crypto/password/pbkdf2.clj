@@ -20,6 +20,9 @@
 (defn- encode-int [i]
   (String. (Base64/encodeInteger (BigInteger/valueOf i))))
 
+(def ^:private default-iterations-count
+  (Long/parseLong (System/getProperty "crypto.password.pbkdf2.default-iterations-count" "100000")))
+
 (defn encrypt
   "Encrypt a password string using the PBKDF2 algorithm. The default number of
   iterations is 100,000. If a salt is not specified, 8 random bytes are
@@ -37,7 +40,7 @@
 
   The iterations, salt, and encrypted password are all Base64 encoded."
   ([raw]
-   (encrypt raw 100000))
+   (encrypt raw default-iterations-count))
   ([raw iterations]
    (encrypt raw iterations "HMAC-SHA1"))
   ([raw iterations algorithm]
