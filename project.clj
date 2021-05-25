@@ -4,9 +4,9 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [crypto-random "1.2.0"]
+                 [crypto-random "1.2.1"]
                  [crypto-equality "1.0.0"]
-                 [commons-codec "1.12"]
+                 [commons-codec "1.15"]
                  [at.favre.lib/bcrypt "0.9.0"]
                  [com.lambdaworks/scrypt "1.4.0"]]
   :plugins [[lein-codox "0.9.4"]]
