@@ -56,6 +56,6 @@ make brute forcing encrypted passwords very costly.
 
 ## License
 
-Copyright © 2019 James Reeves
+Copyright © 2021 James Reeves
 
 Distributed under the Eclipse Public License, the same as Clojure.
