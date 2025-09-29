@@ -9,7 +9,7 @@
 
 (def ^:private default-iterations
   (Long/parseLong
-   (System/getProperty "crypto.password.argon2.default-iterations" "10")))
+   (System/getProperty "crypto.password.argon2.default-iterations" "2")))
 
 (def ^:private default-memory-cost
   (Long/parseLong
@@ -24,7 +24,7 @@
   "Encrypt a password string using the argon2 algorithm. This function takes
   three optional parameters:
 
-  * `t` - the number of iterations, defaults to 10
+  * `t` - the number of iterations, defaults to 2
   * `m` - the memory cost, defaults to 65536
   * `p` - the parallelization parameter, defaults to 1"
   ([raw]
