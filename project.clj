@@ -8,7 +8,8 @@
                  [crypto-equality "1.0.0"]
                  [commons-codec "1.15"]
                  [at.favre.lib/bcrypt "0.9.0"]
-                 [com.lambdaworks/scrypt "1.4.0"]]
+                 [com.lambdaworks/scrypt "1.4.0"]
+                 [de.mkammerer/argon2-jvm "2.12"]]
   :plugins [[lein-codox "0.9.4"]]
   :codox
   {:output-path "codox"
