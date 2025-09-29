@@ -4,7 +4,7 @@
   See: https://www.argon2.com/"
   (:import [de.mkammerer.argon2 Argon2 Argon2Factory]))
 
-(def argon2
+(def ^:private argon2
   (delay (Argon2Factory/create)))
 
 (def ^:private default-iterations
