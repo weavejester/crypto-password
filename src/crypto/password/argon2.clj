@@ -1,7 +1,7 @@
 (ns crypto.password.argon2
   "Functions for encrypting passwords using the recommended argon2 algorithm.
 
-  See: https://www.argon2.com/"
+  See: https://github.com/P-H-C/phc-winner-argon2"
   (:import [de.mkammerer.argon2 Argon2 Argon2Factory]))
 
 (def ^:private argon2

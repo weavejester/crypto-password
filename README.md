@@ -6,7 +6,7 @@ A Clojure library for securing user passwords using a
 * [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
 * [Bcrypt](http://bcrypt.sourceforge.net/)
 * [scrypt](http://www.tarsnap.com/scrypt.html)
-* [argon2](https://github.com/phxql/argon2-jvm)
+* [Argon2](https://github.com/P-H-C/phc-winner-argon2)
 
 [1]: http://en.wikipedia.org/wiki/Key_derivation_function
 
