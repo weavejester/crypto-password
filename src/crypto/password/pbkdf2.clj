@@ -21,7 +21,9 @@
   (String. (Base64/encodeInteger (BigInteger/valueOf i))))
 
 (def ^:private default-iterations-count
-  (Long/parseLong (System/getProperty "crypto.password.pbkdf2.default-iterations-count" "100000")))
+  (Long/parseLong
+   (System/getProperty
+    "crypto.password.pbkdf2.default-iterations-count" "100000")))
 
 (defn encrypt
   "Encrypt a password string using the PBKDF2 algorithm. The default number of
@@ -49,7 +51,8 @@
    {:pre [(contains? algorithm-codes algorithm)]}
    (let [key-length  160
          key-spec    (PBEKeySpec. (.toCharArray raw) salt iterations key-length)
-         key-factory (SecretKeyFactory/getInstance (get algorithm-codes algorithm))]
+         key-factory (SecretKeyFactory/getInstance
+                      (get algorithm-codes algorithm))]
      (->> (.generateSecret key-factory key-spec)
           (.getEncoded)
           (encode-str)
@@ -70,6 +73,8 @@
   (let [parts         (str/split encrypted #"\$")
         iterations    (decode-int (parts 0))
         algorithm     (if (= (count parts) 4) (parts 1) "HMAC-SHA1")
-        salt          (decode-str (if (= algorithm "HMAC-SHA1") (parts 1) (parts 2)))
+        salt          (decode-str (if (= algorithm "HMAC-SHA1")
+                                    (parts 1)
+                                    (parts 2)))
         raw-encrypted (encrypt raw iterations algorithm salt)]
     (crypto/eq? raw-encrypted encrypted)))

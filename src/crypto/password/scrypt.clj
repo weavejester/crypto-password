@@ -5,13 +5,17 @@
   (:import com.lambdaworks.crypto.SCryptUtil))
 
 (def ^:private default-cpu-cost
-  (Long/parseLong (System/getProperty "crypto.password.scrypt.default-cpu-cost" "32768")))
+  (Long/parseLong
+   (System/getProperty "crypto.password.scrypt.default-cpu-cost" "32768")))
 
 (def ^:private default-memory-cost
-  (Long/parseLong (System/getProperty "crypto.password.scrypt.default-memory-cost" "8")))
+  (Long/parseLong
+   (System/getProperty "crypto.password.scrypt.default-memory-cost" "8")))
 
 (def ^:private default-parallelization-parameter
-  (Long/parseLong (System/getProperty "crypto.password.scrypt.default-parallelization-parameter" "1")))
+  (Long/parseLong
+   (System/getProperty
+    "crypto.password.scrypt.default-parallelization-parameter" "1")))
 
 (defn encrypt
   "Encrypt a password string using the scrypt algorithm. This function takes

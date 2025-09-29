@@ -5,7 +5,8 @@
   (:import [at.favre.lib.crypto.bcrypt BCrypt]))
 
 (def ^:private default-work-factor
-  (Long/parseLong (System/getProperty "crypto.password.bcrypt.default-work-factor" "11")))
+  (Long/parseLong
+   (System/getProperty "crypto.password.bcrypt.default-work-factor" "11")))
 
 (defn encrypt
   "Encrypt a password string using the BCrypt algorithm. The optional work
