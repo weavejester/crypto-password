@@ -26,4 +26,4 @@ jobs:
           restore-keys: cljdeps-
 
       - name: Run tests
-        run: lein test
+        run: lein test-all
