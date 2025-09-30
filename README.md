@@ -3,10 +3,10 @@
 A Clojure library for securing user passwords using a
 [key derivation function][1]. Supports the following algorithms:
 
-* [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
-* [Bcrypt](http://bcrypt.sourceforge.net/)
-* [scrypt](http://www.tarsnap.com/scrypt.html)
 * [Argon2](https://github.com/P-H-C/phc-winner-argon2)
+* [Bcrypt](http://bcrypt.sourceforge.net/)
+* [PBKDF2](http://en.wikipedia.org/wiki/PBKDF2)
+* [scrypt](http://www.tarsnap.com/scrypt.html)
 
 [1]: http://en.wikipedia.org/wiki/Key_derivation_function
 
