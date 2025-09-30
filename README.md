@@ -14,11 +14,11 @@ A Clojure library for securing user passwords using a
 
 Add the following dependency to your deps.edn file:
 
-    crypto-password/crypto-password {:mvn/version "0.3.0"}
+    crypto-password/crypto-password {:mvn/version "0.4.0"}
 
 Or to your Leiningen project file:
 
-    [crypto-password "0.3.0"]
+    [crypto-password "0.4.0"]
 
 ## Usage
 

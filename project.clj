@@ -1,4 +1,4 @@
-(defproject crypto-password "0.3.0"
+(defproject crypto-password "0.4.0"
   :description "Library for securely hashing passwords"
   :url "https://github.com/weavejester/crypto-password"
   :license {:name "Eclipse Public License"
