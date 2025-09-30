@@ -12,7 +12,11 @@ A Clojure library for securing user passwords using a
 
 ## Installation
 
-Add the following dependency to your `project.clj` file:
+Add the following dependency to your deps.edn file:
+
+    crypto-password/crypto-password {:mvn/version "0.3.0"}
+
+Or to your Leiningen project file:
 
     [crypto-password "0.3.0"]
 
