@@ -10,7 +10,7 @@
                  [at.favre.lib/bcrypt "0.10.2"]
                  [com.lambdaworks/scrypt "1.4.0"]
                  [de.mkammerer/argon2-jvm "2.12"]]
-  :plugins [[lein-codox "0.9.4"]]
+  :plugins [[lein-codox "0.10.8"]]
   :codox
   {:output-path "codox"
    :project  {:name "Crypto-Password"}
